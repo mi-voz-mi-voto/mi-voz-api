@@ -3,6 +3,6 @@ class UserMailer < ApplicationMailer
 
   def registration(user)
     @user = user
-    mail(to: @user.email, subject: 'Success')
+    mail(to: @user.email, subject: t('registration_confirmation'))
   end
 end

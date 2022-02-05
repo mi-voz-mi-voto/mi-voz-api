@@ -7,16 +7,15 @@ RSpec.describe UserMailer, type: :mailer do
         first_name: 'Will',
         last_name: 'Ferrell',
         state: 'Arkansas',
-        postal_code: 98256,
         email: 'bestactorever@gmail.com',
-        language: 'en'
+        language: 'es'
       )
 
       email = UserMailer.registration(user)
 
       expect(email.to).to eq([user.email])
       expect(email.from).to eq([ENV['user_email']])
-      expect(email.subject).to eq('Success')
+      expect(email.subject).to eq('Registration Confirmation')
     end
   end
 end

@@ -1,0 +1,3 @@
+es:
+  welcome: "Bienvenidos, %{first_name} %{last_name}! Gracias por unirte a nosotros en Mi Voz Mi Voto!"
+  registration_confirmation: "Confirmación de registro"
