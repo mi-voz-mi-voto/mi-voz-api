@@ -7,9 +7,8 @@ RSpec.describe 'User Registration/ Email Api' do
         first_name: 'Luis',
         last_name: 'Arroyo',
         state: 'Colorado',
-        postal_code: 80011,
         email: 'Notmyemail@email.com',
-        language: 'en'
+        language: 'es'
       }
 
       headers = { CONTENT_TYPE: 'application/json', Accept: 'application/json' }
@@ -18,7 +17,7 @@ RSpec.describe 'User Registration/ Email Api' do
 
       expect(response).to be_successful
       expect(User.last.email).to eq(user_params[:email])
-      expect(json[:success]).to eq("User created. A confirmation email has been sent to the user.")
+      expect(json[:success]).to eq("User created. A confirmation email has been sent to #{user_params[:email]}.")
     end
   end
 
