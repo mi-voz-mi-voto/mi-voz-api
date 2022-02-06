@@ -19,6 +19,25 @@ RSpec.describe 'User Registration/ Email Api' do
       expect(User.last.email).to eq(user_params[:email])
       expect(json[:success]).to eq("User created. A confirmation email has been sent to #{user_params[:email]}.")
     end
+
+    it 'successfully deletes/unsubscribes a user' do
+      user = User.create!(
+        first_name: 'Test',
+        last_name: 'User',
+        state: 'Colorado',
+        email: 'Test@email.com',
+        language: 'en'
+      )
+
+      expect(User.all).to include(user)
+
+      delete "/api/v1/users/#{user.id}"
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(200)
+      expect(User.all).to_not include(user)
+      expect(json[:success]).to eq("Successfully unsubscribed. User will no longer recieve emails at #{user.email}.")
+    end
   end
 
   describe 'sad path' do

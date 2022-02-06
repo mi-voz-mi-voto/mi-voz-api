@@ -13,10 +13,22 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+
+    render json: {success: "Successfully unsubscribed. User will no longer recieve emails at #{user.email}."}, status: 200
+  end
+
+
   private
 
   def set_locale
-    I18n.locale = params[:language]
+    if !params[:language].nil?
+      I18n.locale = params[:language]
+    else
+      I18n.locale = 'en'
+    end
   end
 
   def user_params
