@@ -1,6 +1,5 @@
-#General elections and referendums are considered to be the same in civic service
-#each array has nil values for the election that dosen't match
-# Serializer can filter out nil values
+#General elections and referendums are considered to be the same to civic service
+#Created poros for each to make serializing easier 
 class ElectionsFacade
 
   def self.elections(location)
