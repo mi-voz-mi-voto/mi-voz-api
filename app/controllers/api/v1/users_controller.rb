@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
 
-    render json: {success: "Successfully unsubscribed. You will no longer recieve email notifications at #{user.email}."}, status: 200
+    render json: {success: "You have successfully unsubscribed from Mi Voto, Mi Voz's email list. You will no longer receive email notifications at #{user.email}."}, status: 200
   end
 
 
