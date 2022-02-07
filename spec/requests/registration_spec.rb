@@ -6,7 +6,7 @@ RSpec.describe 'User Registration/ Email Api' do
       user_params = {
         first_name: 'Luis',
         last_name: 'Arroyo',
-        state: 'Colorado',
+        state_name: 'Colorado',
         email: 'Notmyemail@email.com',
         language: 'es'
       }
@@ -24,7 +24,7 @@ RSpec.describe 'User Registration/ Email Api' do
       user = User.create!(
         first_name: 'Test',
         last_name: 'User',
-        state: 'Colorado',
+        state_name: 'Colorado',
         email: 'Test@email.com',
         language: 'en'
       )
@@ -46,7 +46,7 @@ RSpec.describe 'User Registration/ Email Api' do
       user_params = {
         first_name: 'Luis',
         last_name: 'Arroyo',
-        state: 'Colorado',
+        state_name: 'Colorado',
         postal_code: 80011,
         email: 'Weird%email.com',
         language: 'en'
