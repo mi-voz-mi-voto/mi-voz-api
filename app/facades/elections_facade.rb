@@ -12,7 +12,7 @@ class ElectionsFacade
         end
     end
     elections = all_elections.reject {|elec| elec == nil}
-    return elections
+    elections
   end
 
   def self.referendums(location)
