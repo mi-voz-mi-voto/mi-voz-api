@@ -18,6 +18,7 @@ gem 'puma', '~> 3.11'
 gem 'faraday'
 gem 'figaro'
 gem 'rails-i18n', '~> 5.1'
+gem 'rack-cors'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

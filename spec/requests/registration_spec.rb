@@ -6,7 +6,7 @@ RSpec.describe 'User Registration/ Email Api' do
       user_params = {
         first_name: 'Luis',
         last_name: 'Arroyo',
-        state: 'Colorado',
+        state_name: 'co',
         email: 'Notmyemail@email.com',
         language: 'es'
       }
@@ -17,14 +17,14 @@ RSpec.describe 'User Registration/ Email Api' do
 
       expect(response).to be_successful
       expect(User.last.email).to eq(user_params[:email])
-      expect(json[:success]).to eq("User created. A confirmation email has been sent to #{user_params[:email]}.")
+      expect(json[:success]).to eq("You are now registered to receive notifications about upcoming elections in your state. A confirmation email has been sent to #{User.last.email}.")
     end
 
     it 'successfully deletes/unsubscribes a user' do
       user = User.create!(
         first_name: 'Test',
         last_name: 'User',
-        state: 'Colorado',
+        state_name: 'co',
         email: 'Test@email.com',
         language: 'en'
       )
@@ -36,7 +36,7 @@ RSpec.describe 'User Registration/ Email Api' do
 
       expect(response.status).to eq(200)
       expect(User.all).to_not include(user)
-      expect(json[:success]).to eq("Successfully unsubscribed. User will no longer recieve emails at #{user.email}.")
+      expect(json[:success]).to eq("You have successfully unsubscribed from Mi Voto, Mi Voz's email list. You will no longer receive email notifications at #{user.email}.")
     end
   end
 
@@ -46,7 +46,7 @@ RSpec.describe 'User Registration/ Email Api' do
       user_params = {
         first_name: 'Luis',
         last_name: 'Arroyo',
-        state: 'Colorado',
+        state_name: 'co',
         postal_code: 80011,
         email: 'Weird%email.com',
         language: 'en'
@@ -57,7 +57,7 @@ RSpec.describe 'User Registration/ Email Api' do
       json = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to_not be_successful
-      expect(json[:error]).to eq("Error creating user. A valid email must be provided.")
+      expect(json[:error]).to eq("Error creating subscriber. A valid email must be provided.")
     end
   end
 end
