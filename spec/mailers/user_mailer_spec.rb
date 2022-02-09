@@ -6,7 +6,7 @@ RSpec.describe UserMailer, type: :mailer do
       user = User.create!(
         first_name: 'Will',
         last_name: 'Ferrell',
-        state: 'Arkansas',
+        state_name: 'ar',
         email: 'bestactorever@gmail.com',
         language: 'es'
       )
