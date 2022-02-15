@@ -5,22 +5,25 @@ class Api::V1::UsersController < ApplicationController
     user = User.new(user_params)
 
     if !user.email.include?('@')
-      render json: {error: "Error creating subscriber. A valid email must be provided."}, status: 400
+      render json: {error: t("error_creating_user")}, status: 400
     elsif user.save
       UserMailer.registration(user).deliver_now
-      render json: {success: "You are now registered to receive notifications about upcoming elections in your state. A confirmation email has been sent to #{user.email}."}, status: 200
+      render json: {success: t("user_created", email: @user.email)}, status: 200
     elsif User.find_by(email: user.email).present?
-      render json: {error: "#{user.email} is already subscribed to receive election notifications."}, status: 400
+      render json: {error: t("user_exists", email: @user.email)}, status: 400
     else
-      render json: {error: "Error creating subscriber. Please ensure all elements in the form are filled out correctly."}, status: 400
+      render json: {error: t("error")}, status: 400
     end
   end
 
   def destroy
-    user = User.find(params[:id])
-    user.destroy
-
-    render json: {success: "You have successfully unsubscribed from Mi Voto, Mi Voz's email list. You will no longer receive email notifications at #{user.email}."}, status: 200
+    user = User.find_by_email(params[:email])
+    if user.present?
+      user.destroy
+      render json: {success: t("user_deleted", email: user.email)}, status: 200
+    else
+      render json: {error: t("user_not_registered")}, status: 400
+    end
   end
 
 

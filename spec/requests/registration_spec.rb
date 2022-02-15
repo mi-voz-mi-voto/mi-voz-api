@@ -31,7 +31,12 @@ RSpec.describe 'User Registration/ Email Api' do
 
       expect(User.all).to include(user)
 
-      delete "/api/v1/users/#{user.id}"
+      params = {
+        email: 'Test@email.com'
+      }
+
+      headers = { CONTENT_TYPE: 'application/json', Accept: 'application/json' }
+      delete '/api/v1/users/', headers: headers, params: params.to_json
       json = JSON.parse(response.body, symbolize_names: true)
 
       expect(response.status).to eq(200)
