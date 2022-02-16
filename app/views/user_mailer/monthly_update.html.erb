@@ -11,7 +11,7 @@
   Candidates:
     <ul>
       <% election.candidates.each do |candidate| %>
-        <li> <%= candidate[:name] %>, <%= candidate[:candidateUrl] %> </li>
+        <li> <%= candidate[:name] %>, URL: <%= candidate[:candidateUrl] %> </li>
       <% end %>
     </ul>
 <% end %>
