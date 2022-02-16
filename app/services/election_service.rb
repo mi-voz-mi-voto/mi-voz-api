@@ -6,6 +6,7 @@ class ElectionService
       faraday.params['electionId'] = 2000
     end
     JSON.parse(response.body, symbolize_names: true)
+    require "pry"; binding.pry
   end
 
   def self.conn
