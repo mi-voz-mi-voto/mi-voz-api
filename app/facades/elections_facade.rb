@@ -1,11 +1,11 @@
 #General elections and referendums are considered to be the same in civic service
-#each array has nil values for the election that dosen't match
+#each array has nil values for the election that doesn't match
 # Serializer can filter out nil values
 class ElectionsFacade
 
   def self.elections(location)
     service = ElectionService.get_elections(location)[:contests]
-
+    
     all_elections = service.map do |data|
         if data[:type] != 'Referendum'
             Election.new(data)
