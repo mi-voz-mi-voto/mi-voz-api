@@ -8,7 +8,7 @@ class Api::V1::UsersController < ApplicationController
       render json: {error: "Error creating subscriber. A valid email must be provided."}, status: 400
     elsif user.save
       UserMailer.registration(user).deliver_now
-      render json: {success: "You are now registered to receive notifications about upcoming elections in your state. A confirmation email has been sent to #{user.email}."}, status: 200
+      render json: {success: "A confirmation email for state election reminders has been sent to #{user.email}."}, status: 200
     elsif User.find_by(email: user.email).present?
       render json: {error: "#{user.email} is already subscribed to receive election notifications."}, status: 400
     else
@@ -18,9 +18,12 @@ class Api::V1::UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    user.destroy
-
-    render json: {success: "You have successfully unsubscribed from Mi Voto, Mi Voz's email list. You will no longer receive email notifications at #{user.email}."}, status: 200
+    if user.present?
+      user.destroy
+      render json: {success: "You have successfully unsubscribed from Mi Voz, Mi Voto's email list. You will no longer receive email notifications at #{user.email}."}, status: 200
+    else
+      render json: {error: "This email is not currently registered to receive emails."}, status: 400
+    end
   end
 
 
