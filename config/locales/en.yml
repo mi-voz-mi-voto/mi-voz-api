@@ -3,7 +3,7 @@
 # than English, add the necessary files in this directory.
 
 en:
-  #confirmation email messages 
+  #confirmation email messages
   welcome: "Welcome, %{first_name} %{last_name}! Thank you for joining Mi Voz Mi Voto!"
   registration_confirmation: "Registration Confirmation"
 
@@ -14,5 +14,5 @@ en:
   error: "Error creating subscriber. Please ensure all elements in the form are filled out correctly."
 
   #json responses for deleting a user
-  user_deleted: "You have successfully unsubscribed from Mi Voto, Mi Voz's email list. You will no longer receive email notifications at %{email}."
+  user_deleted: "You have successfully unsubscribed from Mi Voz, Mi Voto's email list. You will no longer receive email notifications at %{email}."
   user_not_registered: "This email is not currently registered to receive emails."
