@@ -1,24 +1,51 @@
-# README
+# Mi Voz Mi Voto API 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repo is the API created for the Mi Voz Mi Voto project. Contrubutors include Alex McConnell and Luis Arroyo. 
 
-Things you may want to cover:
+## Technologies 
 
-* Ruby version
+1. Rails 5 
+2. Ruby 2.7.2 
+3. RSpec test suite 
+4. Postgresql database 
 
-* System dependencies
+## Endpoints 
 
-* Configuration
+Base URL for testing: ```http://localhost:3001/api/v1```
+Base URL for production: ```TBD``` 
 
-* Database creation
+```POST /users``` 
 
-* Database initialization
+Request: 
+```
+{ 
+  "first_name": "Test", 
+  "last_name": "Example", 
+  "state_name": "Colorado", 
+  "email": "test@example.com", 
+  "language": "en" OR "es"
+}
+```
+Creates a new user and subscribes them to email notifications. 
+This request will also send a confirmation to the users email. 
 
-* How to run the test suite
+```GET /elections``` 
 
-* Services (job queues, cache servers, search engines, etc.)
+Request: 
+``` 
+{ 
+  "location": "Alaska" 
+}
+``` 
+Returns election info for the provided state. Election info provided by Google Civic API. 
 
-* Deployment instructions
+```DELETE /users```
 
-* ...
+Request: 
+``` 
+{ 
+  "email": "test@example.com"  
+}
+``` 
+Delete user by email. Will no longer receive email notifications. 
+

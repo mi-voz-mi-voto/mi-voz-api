@@ -6,12 +6,13 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: t('registration_confirmation'))
   end
 
-  # def monthly_update(user)
-  #   @user = user
-  #   @elections = ElectionsFacade.elections(@user.location)
-  #   @referendums = ElectionsFacade.referendums(@user.location)
-  #   @state_voting_info = ElectionsFacade.state_info(@user.location)
-  #
-  #   mail(to: @user.email, subject: )
-  # end
+  def monthly_update(user)
+    elections = ElectionsFacade.elections(user[:state_name])
+    referendums = ElectionsFacade.referendums(user[:state_name])
+    state = ElectionsFacade.state_info(user[:state_name])
+
+    @user = user
+    @facade = {elections: elections, referendums: referendums, state: state}
+    mail(to: @user.email, subject: "Your monthly update is here!")
+  end
 end

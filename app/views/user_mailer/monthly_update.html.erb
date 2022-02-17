@@ -1,0 +1,25 @@
+<h2>Here is your monthly update for Mi Voz, Mi Voto!</h2>
+
+<p>More information about the latest elections can be found here:
+  <a href="<%= @facade[:state].election_info_url %>"> <%= @facade[:state].election_info_url %> </a>
+</p>
+
+<h3>Elections</h3>
+<% @facade[:elections].each do |election| %>
+  Type: <%= election.type %><br>
+  Office: <%= election.office %><br>
+  Candidates:
+    <ul>
+      <% election.candidates.each do |candidate| %>
+        <li> <%= candidate[:name] %>, URL: <%= candidate[:candidateUrl] %> </li>
+      <% end %>
+    </ul>
+<% end %>
+
+<h3>Referendums</h3>
+<% @facade[:referendums].each do |referendum| %>
+  Type: <%= referendum.type %><br>
+  Title: <%= referendum.title %><br><br>
+<% end %>
+
+<a href="https://mi-voz-mi-voto.herokuapp.com/unsubscribe">Unsubscribe Here</a>
