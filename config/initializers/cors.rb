@@ -12,7 +12,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     resource '/users',
       headers: :any,
       resource: '*',
-      methods: [:get, :post, :delete]
+      methods: [:get, :post, :delete, :patch]
     resource '/elections',
       headers: :any,
       resource: '*',
