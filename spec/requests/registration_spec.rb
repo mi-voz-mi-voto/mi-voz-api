@@ -17,7 +17,7 @@ RSpec.describe 'User Registration/ Email Api' do
 
       expect(response).to be_successful
       expect(User.last.email).to eq(user_params[:email])
-      expect(json[:success]).to eq("A confirmation email for state election reminders has been sent to #{User.last.email}.")
+      expect(json[:success]).to eq("Ahora usted esta registrado para recibir notificaciones sobre las proximas elecciones en su estado. Un correo electronico do confirmacion ha sido enviado.")
     end
 
     it 'successfully deletes/unsubscribes a user' do
