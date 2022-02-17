@@ -3,5 +3,16 @@
 # than English, add the necessary files in this directory.
 
 en:
+  #confirmation email messages
   welcome: "Welcome, %{first_name} %{last_name}! Thank you for joining Mi Voz Mi Voto!"
   registration_confirmation: "Registration Confirmation"
+
+  #json responses for creating a new user/ subscriber
+  error_creating_user: "Error creating subscriber. A valid email must be provided."
+  user_created: "You are now registered to receive notifications about upcoming elections in your state. A confirmation email has been sent to %{email}."
+  user_exists: "%{email} is already subscribed to receive election notifications."
+  error: "Error creating subscriber. Please ensure all elements in the form are filled out correctly."
+
+  #json responses for deleting a user
+  user_deleted: "You have successfully unsubscribed from Mi Voz, Mi Voto's email list. You will no longer receive email notifications at %{email}."
+  user_not_registered: "This email is not currently registered to receive emails."
